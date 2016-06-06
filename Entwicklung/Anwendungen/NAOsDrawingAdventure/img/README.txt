@@ -1,0 +1,1 @@
+This is the directory for saving the images (original/feature extracted) during the image processing process.

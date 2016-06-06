@@ -1,0 +1,1 @@
+This is the directory for saving the LOG-data during the programm execution. 
