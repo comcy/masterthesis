@@ -1,0 +1,47 @@
+\begin{tikzpicture}[
+  font=\sffamily,
+  every matrix/.style={ampersand replacement=\&,column sep=2cm,row sep=2cm},
+  abt/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.8cm},
+  dbe/.style={draw,thick,rounded corners,fill=blue!20,inner sep=.5cm},
+	nonused/.style={dbe,fill=red!30},
+  newused/.style={dbe,fill=green!20},
+  datastore/.style={draw,very thick, fill=red!20, inner sep=.3cm},
+  dots/.style={gray,scale=2},
+  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	from/.style={<-,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  every node/.style={align=center}]
+	
+  % Positionierung über Matrix-Layout
+  \matrix{
+  	\node[abt] (fs) {FS\\ (Functional Specification)};\& \node[abt] (sds) {SDS\\ (Software Design Specification)};\& \node[abt] (sw) {SW\\ (Software)}; \& \\
+    \& \& \& \& \\
+    \node[dbe] (db) {Text-\\ DB}; \& \& \node[dbe] (projdb) {Projekt-\\ DB}; \& \& \\ %\node[dbe] (kprojdb) {Kunden\\ Projekt DB}; \\
+		\& \node[datastore] (sync) {Synchronisations-\\ Prozess}; \& \& \\    
+		%\& \node[newused] (request) {Neue Prozess-\\ folge}; \& \& \\
+  };
+
+	% Specifiactions
+  \draw[to, very thick, yellow!80!black] (fs) -- node[] {} node[] {} (sds);	
+	\draw[to, very thick, yellow!80!black] (sds) -- node[] {} node[] {} (sw);
+	
+% FS - DB
+  \draw[from, very thick, blue] (fs) -- node[midway,left] {1) Export} node[midway,below] {} (db);
+
+	% SDS - DB
+  \draw[from, very thick, blue] (sds) to[bend left=15] node[midway,below right] {2) Export} (db);
+
+	% SW - DB
+  \draw[to, very thick, dashed, red!90] (db) to[bend right=40] node[midway,below right] {3) bezieht Texte} (sw);	
+	\draw[both, very thick, dashed, red!90] (sw) -- node[midway,right] {4) Synchronisation} (projdb);
+	%\draw[to, very thick] (sw) -- node[midway,above left] {}
+		%  node[midway,below] {} (kprojdb);
+
+	% Projekt DB - Sync -DB
+  \draw[to, very thick, dashed, red!90] (projdb) to[bend left=20] node[below right] {5) Bearbeitung} (sync);
+	\draw[to, very thick, dashed, red!90] (sync) to[bend left=20] node[midway,below left] {6) Aktualisierung} (db);
+
+	% Overlay, zweite Zeichnung
+  %\draw[color=red!80!black!90, line width=1.4mm,->] (0,-4.4) -- (-1,-5.4) -- (0,-5.4) -- (-1,-6.4){};
+          
+\end{tikzpicture}

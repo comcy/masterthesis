@@ -1,0 +1,192 @@
+%% Praeambel laden -> Einstellungen für das gesamte Dokument
+\input{MA_praeamble.tex}
+
+%% Titelseite
+\input{title/titel.tex}
+
+\begin{document}
+	
+	\pagestyle{empty}
+	\maketitle
+	\thispagestyle{empty}
+	\cleardoublepage
+	\newpage
+	
+	\vspace{10cm}
+	\section*{Kurzfassung}
+	
+	% Einstellungen für Verzeichnisse zu Beginn
+	\pagestyle{fancy}
+	  \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	  \fancyhf{}
+	  \fancyhead[EL]{ { }\leftmark}
+	  \fancyhead[OR]{\thepage}
+	  \renewcommand{\headrulewidth}{0.4pt}
+	  \pagenumbering{roman}
+	  
+	% Kurzfassung
+	%\input{abstract/kurzfassung.tex}
+	\cleardoublepage
+	
+	% Inhaltsverzeichnis 
+	\newpage
+	\dosecttoc
+
+	\tableofcontents
+	\cleardoublepage
+	
+	\printnomenclature
+	\cleardoublepage
+	\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{\thesection { }\leftmark}
+	\fancyhead[OR]{{ }\rightmark}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\pagenumbering{arabic}
+	
+  \fancyfoot[EL]{\textbf{\thepage}}
+	\fancyfoot[OR]{\textbf{\thepage}} 
+	
+	\setcounter{page}{1}
+	
+	%% Einleitung
+	\input{content/01_einleitung/einleitung.tex} %% fertig
+	\newpage
+
+	%% Grundlagen
+	%\input{02_Grundlagen/grundlagen.tex} %% fertig
+	\newpage
+
+	%% Modellierung
+	%\input{03_Modellierung/modellierung.tex} %% fertig
+	\newpage
+
+	%% Implementierung
+	%\input{04_Implementierung/implementierung.tex}
+	\newpage
+
+	%% Evaluierung
+	%\input{05_Evaluierung/evaluierung.tex} %% fertig
+	\newpage
+
+	%% Ausblick
+	%\input{06_Ausblick/ausblick.tex} %% fertig
+	\newpage
+
+\pagestyle{empty}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{\thesection { }\leftmark}
+	\fancyhead[OR]{{ }\rightmark}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+		
+%% neue alphabetische Nummerierung
+\begin{appendix}
+\numberwithin{equation}{section}
+
+%% Anhang
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{ANHANG{ }}
+	\fancyhead[OR]{{ }\rightmark}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+	\input{appendix/anhang.tex}
+\end{appendix}
+
+%% Abbildungsverzeichnis
+\newpage
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{ABBILDUNGSVERZEICHNIS{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+\addcontentsline{toc}{section}{\textbf{Abbildungsverzeichnis}}
+\listoffigures
+\cleardoublepage
+
+%% Tabellenverzeichnis
+\newpage
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{TABELLENVERZEICHNIS{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+
+\addcontentsline{toc}{section}{\textbf{Tabellenverzeichnis}}
+\listoftables
+\cleardoublepage
+
+%% Quellcodeverzeichnis
+\newpage
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{QUELLCODEVERZEICHNIS{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+\addcontentsline{toc}{section}{\textbf{Quellcodeverzeichnis}}
+\lstlistoflistings
+\cleardoublepage
+
+%% Algorithmenverzeichnis
+\newpage
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{ALGORITHMENVERZEICHNIS{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+\addcontentsline{toc}{section}{\textbf{Algorithmenverzeichnis}}
+\listof{algorithm}{Algorithmenverzeichnis}
+\cleardoublepage
+
+%% Quellenverzeichnis
+\newpage
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{QUELLENVERZEICHNIS{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+\addcontentsline{toc}{section}{\textbf{Quellenverzeichnis}}
+\bibliographystyle{alphadin}	  
+%\bibliography{00_Quellenverzeichnis/quellenverzeichnis}
+\cleardoublepage
+
+%% Literaturverzeichnis
+%\newpage
+%\pagestyle{fancy}
+%	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+%	\fancyhf{}
+%	\fancyhead[EL]{LITERATURVERZEICHNIS{ }}
+%	\fancyhead[OR]{{ }}
+%	\renewcommand{\headrulewidth}{0.4pt}
+%	\pagenumbering{arabic}
+%\addcontentsline{toc}{section}{\textbf{Literaturverzeichnis}}
+%\input{00_Quellenverzeichnis/bildnachweise.tex}
+%\cleardoublepage
+
+
+%% Eidesstattliche Erklärung
+\pagestyle{fancy}
+	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+	\fancyhf{}
+	\fancyhead[EL]{EIDESSTATTLICHE ERKLÄRUNG{ }}
+	\fancyhead[OR]{{ }}
+	\renewcommand{\headrulewidth}{0.4pt}
+	%\pagenumbering{arabic}
+\addcontentsline{toc}{section}{\textbf{Eidesstattliche Erklärung}}
+%\input{00_Eidesstattliche_Erklaerung/eidesstattliche_erklaerung.tex}
+\cleardoublepage
+\end{document}
