@@ -66,14 +66,13 @@ def onMiddleheadTouched(event):
 
 
         ## TODO call function while services do not work
-
-
         NAOVision.subscribeCAM()
+        #NAOVision.unssubsribeCAM()
 
+        ## TODO works!!!
         #NAOVision.capture_image()
 
 
-        #NAOVision.unssubsribeCAM()
 
 
 """
