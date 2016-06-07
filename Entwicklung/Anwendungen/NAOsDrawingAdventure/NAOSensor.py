@@ -64,8 +64,14 @@ def onMiddleheadTouched(event):
         # NAOVision.takePicture()
         logging.info('Middlehead touched')
 
-        NAOVision.capture_image()
-        #NAOVision.subscribeCAM()
+
+        ## TODO call function while services do not work
+
+
+        NAOVision.subscribeCAM()
+
+        #NAOVision.capture_image()
+
 
         #NAOVision.unssubsribeCAM()
 

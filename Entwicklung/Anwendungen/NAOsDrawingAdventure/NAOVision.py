@@ -15,12 +15,13 @@ PIL_COLOR_SPACE = "RGB"
 RESOLUTION = 2   #VGA
 COLOR_SPACE = 11  #RGB
 FPS = 30
+IMAGE_FORMAT = "PNG"
 
 """
 @function: initVisionService()
 @description: Connect with the vision service
 """
-def initVisionService(SESSION):
+def initVisionService(SESSION): # WORKS !!!
     global VISION_SERVICE
     VISION_SERVICE = SESSION.service("ALVideoDevice")
     logging.info('Created vision service')
@@ -38,9 +39,9 @@ def subscribeCAM():
   image_height = nao_image[1]
   buffer = nao_image[6]
 
-  ## save original captured image on dorectory
-  image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), buffer)
-  image.save("img/original_image.png", "PNG")
+  ## save original captured image in directory
+  image = Image.fromstring(PIL_COLOR_SPACE, (image_width, image_height), buffer)
+  image.save("img/original_image.png", IMAGE_FORMAT)
   image.show()
 
   logging.info('take picture')
@@ -55,9 +56,9 @@ def unssubsribeCAM():
 @description: Use NAO's camera to detect the shape to draw. Uses
 PIL at first, then uses Canny Edge Detection via OpenCV.
 """
-def capture_image():
+def capture_image():     ## TODO This method works !!!!
 
-  video_proxy = ALProxy("ALVideoDevice", "192.168.1.100", 9559)
+  video_proxy = ALProxy("ALVideoDevice", "192.168.1.105", 9559) ## for debugging reasons use a fixed ip address/port
 
   ## capturing the image
   video_client = video_proxy.subscribe("NAO_CAM", RESOLUTION, COLOR_SPACE, FPS) # subscribe to "NAO_CAM"
@@ -71,7 +72,7 @@ def capture_image():
 
   ## save original captured image
   image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), buffer)
-  image.save("img/original_image.png", "PNG")
+  image.save("img/original_image.png", IMAGE_FORMAT)
 
   image.show() # show captured image
 
