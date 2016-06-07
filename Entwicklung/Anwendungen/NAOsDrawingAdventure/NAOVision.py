@@ -39,6 +39,7 @@ def subscribeCAM():
   image_height = nao_image[1]
   buffer = nao_image[6]
 
+  ## TODO Function error
   ## save original captured image in directory
   image = Image.fromstring(PIL_COLOR_SPACE, (image_width, image_height), buffer)
   image.save("img/original_image.png", IMAGE_FORMAT)
