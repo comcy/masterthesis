@@ -31,18 +31,19 @@ def subscribeCAM():
   global VIDEO_CLIENT
   VIDEO_CLIENT = VISION_SERVICE.subscribe("NAO_CAM", RESOLUTION, COLOR_SPACE, FPS) # subscribe to "NAO_CAM"
   nao_image = VISION_SERVICE.getImageRemote(VIDEO_CLIENT) # capture image from "NAO_CAM"
-
   logging.info('subscribe CAM')
+
+  VISION_SERVICE.unsubscribe(VIDEO_CLIENT)
+  logging.info('unsubscribe CAM')
 
   ## get image properties
   image_width = nao_image[0]
   image_height = nao_image[1]
   buffer = nao_image[6]
 
-  ## TODO Function error
   ## save original captured image in directory
-  image = Image.fromstring(PIL_COLOR_SPACE, (image_width, image_height), buffer)
-  image.save("img/original_image.png", IMAGE_FORMAT)
+  image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), buffer)
+  image.save("img/original_image.png", "PNG")
   image.show()
 
   logging.info('take picture')
@@ -73,7 +74,7 @@ def capture_image():     ## TODO This method works !!!!
 
   ## save original captured image
   image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), buffer)
-  image.save("img/original_image.png", IMAGE_FORMAT)
+  image.save("img/original_image.png", "PNG")
 
   image.show() # show captured image
 

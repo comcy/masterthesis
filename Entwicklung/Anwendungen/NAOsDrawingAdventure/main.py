@@ -44,9 +44,9 @@ def mainController():
     NAOMotion.turnOffAutonomousLife()
 
     ## 1.1) Say welcome text for users an give instructions.
-    NAOSpeech.sayText("Hello, my name is Nao. I am now ready for using the NAO Drawing Adventure.")
-    NAOSpeech.sayText("Use my arm touch sensors to control my gestures.") ## TODO welcome text for arm sensors
-    NAOSpeech.sayText("Use my head sensors for taking some pictures. Start with the forehead sensor to disable my head stiffness.") ## TODO add the other stuff
+    #NAOSpeech.sayText("Hello, my name is Nao. I am now ready for using the NAO Drawing Adventure.")
+    #NAOSpeech.sayText("Use my arm touch sensors to control my gestures.") ## TODO welcome text for arm sensors
+    #NAOSpeech.sayText("Use my head sensors for taking some pictures. Start with the forehead sensor to disable my head stiffness.") ## TODO add the other stuff
 
     ## 2) Bring arms in position
 

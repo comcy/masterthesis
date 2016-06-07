@@ -69,7 +69,7 @@ def onMiddleheadTouched(event):
         NAOVision.subscribeCAM()
         #NAOVision.unssubsribeCAM()
 
-        ## TODO works!!!
+        ## TODO works before changings!!!
         #NAOVision.capture_image()
 
 
