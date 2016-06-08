@@ -4,14 +4,13 @@
 import logging
 import cv2
 from PIL import Image
-from naoqi import ALProxy
 from io import BytesIO
 
+## Objects.
 VISION_SERVICE = None
 VIDEO_CLIENT = None
 
-## initialize
-eyes = None  # TODO not needed?
+## Constants.
 PIL_COLOR_SPACE = "RGB"
 RESOLUTION = 2  # VGA
 COLOR_SPACE = 11  # RGB
@@ -20,34 +19,38 @@ IMAGE_FORMAT = "PNG"
 
 """
 @function: initVisionService()
-@description: Connect with the vision service
+@description: Creates a VISION_SERVICE object for the actual SESSION.
 """
-
-
 def initVisionService(SESSION):  # WORKS !!!
     global VISION_SERVICE
     VISION_SERVICE = SESSION.service("ALVideoDevice")
     logging.info('Created VISION_SERVICE')
 
 
+"""
+@function: subscribeCam()
+@description: Creates a VIDEO_CLIENT object and subscribes NAO_CAM with the VISION_SERVICE for the actual SESSION.
+"""
 def subscribeCam():
     global VIDEO_CLIENT
     VIDEO_CLIENT = VISION_SERVICE.subscribe("NAO_CAM", RESOLUTION, COLOR_SPACE, FPS)  # subscribe to "NAO_CAM"
     logging.info('subscribe NAO_CAM')
 
 
+"""
+@function: unsubscribeCam()
+@description: Release the VISION_CLIENT from subscription of the NAO_CAM for the actual SESSION.
+"""
 def unssubscribeCam():
     VISION_SERVICE.unsubscribe(VIDEO_CLIENT)
     logging.info('unsubscribe NAO_CAM')
 
 
 """
-@function: captureImage
-@description: Use NAO's camera to detect the shape to draw. Uses
-PIL at first, then uses Canny Edge Detection via OpenCV.
+@function: captureImage()
+@description: Take a picture wit NAO_CAM.
 """
-
-
+## TODO: auslagern von PIL und CANNY
 def captureImage():
     nao_image = VISION_SERVICE.getImageRemote(VIDEO_CLIENT)  # capture image from "NAO_CAM"
     logging.info('capture image')
