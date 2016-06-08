@@ -5,6 +5,7 @@ import logging
 import cv2
 from PIL import Image
 from naoqi import ALProxy
+from io import BytesIO
 
 VISION_SERVICE = None
 VIDEO_CLIENT = None
@@ -42,7 +43,8 @@ def subscribeCAM():
   buffer = nao_image[6]
 
   ## save original captured image in directory
-  image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), buffer)
+  data = BytesIO(buffer).read()
+  image = Image.frombytes(PIL_COLOR_SPACE, (image_width, image_height), data)
   image.save("img/original_image.png", "PNG")
   image.show()
 
@@ -60,7 +62,7 @@ PIL at first, then uses Canny Edge Detection via OpenCV.
 """
 def capture_image():     ## TODO This method works !!!!
 
-  video_proxy = ALProxy("ALVideoDevice", "192.168.1.105", 9559) ## for debugging reasons use a fixed ip address/port
+  video_proxy = ALProxy("ALVideoDevice", "192.168.1.102", 9559) ## for debugging reasons use a fixed ip address/port
 
   ## capturing the image
   video_client = video_proxy.subscribe("NAO_CAM", RESOLUTION, COLOR_SPACE, FPS) # subscribe to "NAO_CAM"
