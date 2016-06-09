@@ -9,12 +9,12 @@
 
 import logging
 
+# Constants.
 SPEECH_SERVICE = None
 
-
 """
-@function:
-@description:
+@function: initSpeechService(SESSION)
+@description: This function creates a 'SPEECH_SERVICE'-object based on the 'ALTextToSpeech'-module for the actual session.
 """
 def initSpeechService(SESSION):
   global SPEECH_SERVICE
@@ -23,8 +23,8 @@ def initSpeechService(SESSION):
 
 
 """
-@function: sayText()
-@description: This method is for calling a defined saying
+@function: sayText(Text)
+@description: This makes NAO say a Text given by the 'Text'-parameter.
 """
 def sayText(Text):
     SPEECH_SERVICE.say(Text)

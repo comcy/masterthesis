@@ -25,55 +25,56 @@
 	  \pagenumbering{roman}
 	  
 	% Kurzfassung
-	%\input{abstract/kurzfassung.tex}
+	\input{abstract/kurzfassung.tex}
 	\cleardoublepage
 	
 	% Inhaltsverzeichnis 
 	\newpage
+	%% minitoc deklarieren
 	\dosecttoc
-
+	\doparttoc
+	
 	\tableofcontents
 	\cleardoublepage
 	
-	\printnomenclature
 	\cleardoublepage
 	\pagestyle{fancy}
 	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 	\fancyhf{}
-	\fancyhead[EL]{\thesection { }\leftmark}
-	\fancyhead[OR]{{ }\rightmark}
+	\fancyhead[EL]{}
+	\fancyhead[OR]{Kapitel \thesection:{ }\leftmark}
 	\renewcommand{\headrulewidth}{0.4pt}
 	\pagenumbering{arabic}
 	
-  \fancyfoot[EL]{\textbf{\thepage}}
+  	\fancyfoot[EL]{\textbf{\thepage}}
 	\fancyfoot[OR]{\textbf{\thepage}} 
 	
 	\setcounter{page}{1}
 	
 	%% Einleitung
-	\input{content/01_einleitung/einleitung.tex} %% fertig
+	\input{content/00_Einleitung/01_einleitung.tex} %% 
 	\newpage
 
+	%% Teil I
 	%% Grundlagen
-	%\input{02_Grundlagen/grundlagen.tex} %% fertig
+	\input{content/01_Grundlagen/01_nao_grundlagen.tex} %%
+	\input{content/01_Grundlagen/02_hilfsmittel.tex} %% 
 	\newpage
 
-	%% Modellierung
-	%\input{03_Modellierung/modellierung.tex} %% fertig
+	%% Teil II
+	%% Entwicklungsprozess
+	\input{content/02_Entwicklungsprozess/01_entwurf.tex} %% 
+	\input{content/02_Entwicklungsprozess/02_bildverarbeitung.tex} %%
+	\input{content/02_Entwicklungsprozess/03_kinematik.tex} %%
 	\newpage
-
-	%% Implementierung
-	%\input{04_Implementierung/implementierung.tex}
-	\newpage
-
+	
+	%% Teil III
 	%% Evaluierung
-	%\input{05_Evaluierung/evaluierung.tex} %% fertig
+	\input{content/03_Evaluierung/01_zusammenfassung.tex} %% 
+	\input{content/03_Evaluierung/02_ausblick.tex} %%	
 	\newpage
 
-	%% Ausblick
-	%\input{06_Ausblick/ausblick.tex} %% fertig
-	\newpage
-
+	
 \pagestyle{empty}
 	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 	\fancyhf{}
@@ -84,7 +85,7 @@
 		
 %% neue alphabetische Nummerierung
 \begin{appendix}
-\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
 
 %% Anhang
 \pagestyle{fancy}
@@ -161,21 +162,8 @@
 	%\pagenumbering{arabic}
 \addcontentsline{toc}{section}{\textbf{Quellenverzeichnis}}
 \bibliographystyle{alphadin}	  
-%\bibliography{00_Quellenverzeichnis/quellenverzeichnis}
+\bibliography{bibliography/quellenverzeichnis}
 \cleardoublepage
-
-%% Literaturverzeichnis
-%\newpage
-%\pagestyle{fancy}
-%	\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-%	\fancyhf{}
-%	\fancyhead[EL]{LITERATURVERZEICHNIS{ }}
-%	\fancyhead[OR]{{ }}
-%	\renewcommand{\headrulewidth}{0.4pt}
-%	\pagenumbering{arabic}
-%\addcontentsline{toc}{section}{\textbf{Literaturverzeichnis}}
-%\input{00_Quellenverzeichnis/bildnachweise.tex}
-%\cleardoublepage
 
 
 %% Eidesstattliche Erklärung
@@ -187,6 +175,8 @@
 	\renewcommand{\headrulewidth}{0.4pt}
 	%\pagenumbering{arabic}
 \addcontentsline{toc}{section}{\textbf{Eidesstattliche Erklärung}}
-%\input{00_Eidesstattliche_Erklaerung/eidesstattliche_erklaerung.tex}
+\input{extras/eidesstattliche_erklaerung.tex}
 \cleardoublepage
+	
+
 \end{document}

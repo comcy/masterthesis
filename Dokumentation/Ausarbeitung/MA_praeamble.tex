@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, twoside]{article}
+\documentclass[12pt, a4paper, twoside]{scrartcl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Packages
@@ -19,12 +19,12 @@
 \usepackage{minitoc}
 
 % TIKZ
-%\usepackage{tikz}
+\usepackage{tikz}
 %\usepackage{00_Packages/tikzuml-v1.0b/tikz-uml}
 %\usepackage{00_Packages/tikz-er2}
 %\usepackage{00_Packages/pgf-pie-0.2.1/pgf-pie}
-%\usepackage{uml}
-%\usepackage{pgf}
+\usepackage{uml}
+\usepackage{pgf}
 
 % Inhalt
 \usepackage{wrapfig} %floatfig
@@ -37,8 +37,6 @@
 \usepackage{prettyref}
 \usepackage{titleref}
 \usepackage{listings}
-%\usepackage{glossaries}
-\usepackage{nomencl}
 \usepackage{cite}
 \usepackage{graphicx}
 \usepackage{verbatim}
@@ -46,38 +44,35 @@
 \usepackage[colorinlistoftodos]{todonotes}
 
 % Mathe
-%\usepackage{calc}
-%\usepackage{ifthen}
-%\usepackage{times}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{times}
 \usepackage{amsmath}
-%\usepackage{mathtools}
+\usepackage{mathtools}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Farben
+%% Farbdefinitionen
 \definecolor{lightgrey}{gray}{.8}
 \definecolor{lila}{rgb}{0.,0,0.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Seiten-Einstellungen
 % Seitengrößen
 \geometry{left=25mm, right=30mm, top=40mm, bottom=35mm}
-
 % Zeilenabstand: 1,5
 \renewcommand{\baselinestretch}{1.5}
-
 % Einrückung bei Absatzbeginn
 \parindent0ex
-
 % Absatzgröße
 \parskip3ex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Befehl ReWrites
 % Zitate
 \newcommand{\dz}[2]{"#1 {\renewcommand{\baselinestretch}{1}\footnote{#2}}"} % für direkte Zitate - \dz{Zitat}{Quelle}
 \newcommand{\iz}[2]{#1 {\renewcommand{\baselinestretch}{1}\footnote{#2}}} % für indirekte Zitate - \iz{Zitat}{Quelle}
-
-
 % Namensänderungen
 \addto\captionsngerman{
 \renewcommand{\lstlistingname}{Quellcode} % benennt "Listing" um
@@ -87,21 +82,25 @@
 
 \floatname{algorithm}{Algorithmus}
 
-%% minitoc: einstellungen für minitocs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Einstellungen: minitoc
 \mtcselectlanguage{german}
 \mtcsettitle{secttoc}{Inhalt}
 \mtcsetpagenumbers{secttoc}{off}
 \mtcsetrules{secttoc}{off}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Referenzendefinitionen
 % - full
+%Teile
+\newrefformat{partmin}{\textcolor{blue}{Teil} \titleref{#1}}
 % Abschnitte
 \newrefformat{sec}{\textcolor{blue}{Kapitel} \titleref{#1} auf Seite \pageref{#1}}
-\newrefformat{subsec}{\textcolor{blue}{Unterabschnitt} \titleref{#1} auf Seite \pageref{#1}}
+\newrefformat{subsec}{\textcolor{blue}{Unterkapitel} \titleref{#1} auf Seite \pageref{#1}}
 \newrefformat{secmin}{\textcolor{blue}{Kapitel} \titleref{#1}}
-\newrefformat{subsecmin}{\textcolor{blue}{Unterabschnitt} \titleref{#1}}
+\newrefformat{subsecmin}{\textcolor{blue}{Unterkapitel} \titleref{#1}}
 \newrefformat{anhang}{\textcolor{blue}{Anhang} ~\ref{#1} auf Seite \titleref{#1}}
 \newrefformat{anhangmin}{\textcolor{blue}{Anhang} ~\ref{#1}}
 % Abbildungen
@@ -116,8 +115,19 @@
 % Algorithmen
 \newrefformat{alg}{\textcolor{blue}{Algorithmus}~\ref{#1} auf Seite \pageref{#1}} 
 \newrefformat{algmin}{\textcolor{blue}{Algorithmus}~\ref{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Style Elemente
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Style Element: Blauer Balken 4-teilig
 %\newcommand{\hsdesignbarfour}[1][0.99]{%
-%	\begin{tikzpicture}[scale=#1]
-%	\draw [hsblue2, fill=hsblue2] (0,0) -- (0.1667 \textwidth ,0.0136 \textwidth ) -- %(0.1667 \textwidth ,0.042 \textwidth) -- (0,0.042 \textwidth );
+	%\begin{tikzpicture}[scale=#1]
+	%\draw [hsblue2, fill=hsblue2] (0,0) -- (0.1667 \textwidth ,0.0136 \textwidth ) -- (0.1667 \textwidth ,0.042 %\textwidth) -- (0,0.042 \textwidth );
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Einstellungen: minitoc
+\mtcselectlanguage{german}
+\mtcsettitle{secttoc}{Inhalt}
+\mtcsetpagenumbers{secttoc}{off}
+\mtcsetrules{secttoc}{off}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
